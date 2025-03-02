@@ -20,6 +20,7 @@ public class PlayerCharacterController : MonoBehaviour
     [SerializeField] private Transform[] pathWaypoints;
     
     private Animator animator;
+    private Camera main;
 
     public int Hp
     {
@@ -70,7 +71,9 @@ public class PlayerCharacterController : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1;
         hp = 100;
+        main = Camera.main;
         animator = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         startingHp = hp;
@@ -107,25 +110,14 @@ public class PlayerCharacterController : MonoBehaviour
         if (animator)
             animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
         
-        if (Camera.main != null)
+        if (main != null && Input.mousePosition.normalized.normalized != Vector3.zero)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit, 100f))
             {
                 //We want to know what the mouse is hovering now
                 Debug.Log($"Hit: {hit.collider.name}");
             }
         }
-
-    }
-    
-    private void OnEnable()
-    {
-        
-    }
-
-    private void OnDisable()
-    {
-        
     }
 }

@@ -121,8 +121,8 @@ public class WFX_Demo : MonoBehaviour
 		if(GUILayout.Button(slowMo ? "Normal Speed" : "Slow Motion", GUILayout.Width(100)))
 		{
 			slowMo = !slowMo;
-			if(slowMo)	Time.timeScale = 0.33f;
-			else  		Time.timeScale = 1.0f;
+			// if(slowMo)	Time.timeScale = 0.33f;
+			// else  		Time.timeScale = 1.0f;
 		}
 		
 		GUILayout.EndHorizontal();

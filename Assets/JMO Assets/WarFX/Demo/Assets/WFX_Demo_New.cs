@@ -132,16 +132,16 @@ public class WFX_Demo_New : MonoBehaviour
 		var c = Color.white;
 
 		slowMo = !slowMo;
-		if(slowMo)
-		{
-			Time.timeScale = 0.33f;
-			c.a = 1f;
-		}
-		else
-		{
-			Time.timeScale = 1.0f;
-			c.a = 0.33f;
-		}
+		// if(slowMo)
+		// {
+		// 	// Time.timeScale = 0.33f;
+		// 	c.a = 1f;
+		// }
+		// else
+		// {
+		// 	Time.timeScale = 1.0f;
+		// 	c.a = 0.33f;
+		// }
 
 		slowMoBtn.color = c;
 		slowMoLabel.color = c;

@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   damage: 12
+  selfDestructionTime: 3
 --- !u!1 &2227274138544148054
 GameObject:
   m_ObjectHideFlags: 0

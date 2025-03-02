@@ -10,6 +10,8 @@ public class UIManager : MonoBehaviour
     
     [SerializeField] private PlayerCharacterController bobby;
     [SerializeField] private GameObject skillsHolder;
+    [SerializeField] private GameObject SkillGroup;
+    public Sprite[] skillIcons;
     
     public void RefreshHPText(int newHP)
     {
@@ -19,22 +21,22 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         bobby.onTakeDamageEventAction += RefreshHPText;
+        AssignSpritesToSkillButton();
     }
 
     private void Start()
     {
         hpText.text = bobby.Hp.ToString();
     }
-
-    private void Update()
+    
+    private void AssignSpritesToSkillButton()
     {
-        skillsHolder = GameObject.Find("Skills Group");
-        GameObject[] skillsButtonUI = skillsHolder.GetComponentsInChildren<GameObject>();
+        SkillButtonUI[] skillsButtonUI = skillsHolder.GetComponentsInChildren<SkillButtonUI>();
         
         for (int i = 0; i < skillsButtonUI.Length; i++)
         {
-            skillsButtonUI[i].GetComponent<SkillButtonUI>().skillIcon.sprite =  skillsButtonUI[i].GetComponent<SkillButtonUI>().skillIcons[i];
-            skillsButtonUI[i].GetComponent<SkillButtonUI>().skillNameText.text = "Skill " + (i + 1);
+            skillsButtonUI[i].skillIcon.sprite =  skillIcons[i];
+            skillsButtonUI[i].skillNameText.text = "Skill " + (i + 1);
         }
     }
 }
